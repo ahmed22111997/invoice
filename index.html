@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator</title>
+    <link rel="icon" href="assets/favicon.ico" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script src="assets/js/pdfGenerator.js"></script>
+    <script src="assets/js/main.js"></script>
+</head>
+<body>
+    <h2>Invoice Generator</h2>
+    <form id="invoice-form">
+        <label for="client-name">Client Name:</label>
+        <input type="text" id="client-name" required>
+
+        <label for="invoice-date">Date:</label>
+        <input type="date" id="invoice-date" required>
+
+        <!-- إضافة اختيار العملة -->
+        <label for="currency">Choose Currency:</label>
+        <select id="currency" name="currency" required>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBP">GBP</option>
+            <option value="JPY">JPY</option>
+            <option value="AUD">AUD</option>
+            <option value="CAD">CAD</option>
+            <option value="CHF">CHF</option>
+            <option value="CNY">CNY</option>
+            <option value="SEK">SEK</option>
+            <option value="NZD">NZD</option>
+            <!-- أضف بقية العملات هنا -->
+        </select>
+
+        <table id="invoice-table">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="invoice-body"></tbody>
+        </table>
+
+        <button type="button" class="btn" onclick="addRow()">Add Item</button>
+        <h3>Total: $<span id="invoice-total">0.00</span></h3>
+        <button type="button" class="btn" onclick="generatePDF()">Download PDF</button>
+    </form>
+
+    <footer>
+        <p>Created by Ahmed Mosbah</p>
+    </footer>
+</body>
+</html>
